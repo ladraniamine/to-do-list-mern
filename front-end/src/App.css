@@ -3,3 +3,112 @@
   font-size: 40px;
   font-weight: bold;
 }
+.app{
+    width: 100vw;
+    height: 100vh;
+    
+}
+.wraper{
+  margin: auto;
+  width: 80%;
+}
+*{
+  /* border: 1px solid; */
+  box-sizing: border-box;
+}
+h1{
+font-size: 50px;
+text-transform: capitalize;
+font-weight: 700;
+text-align: center;
+margin-top: 100px;
+margin-bottom: 50px;
+}
+/* add */
+.add{
+  width: 500px;
+  height: 40px;
+  margin: auto;
+  border: 1px solid #000;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.add-input{
+width: 70%;
+height: 100%;
+border: none !important;
+margin: 0;
+padding: 0;
+padding-left: 10px;
+
+}
+.add-input:focus{
+outline: none;
+}
+.add-btn{
+  border: none;
+  width: 30%;
+  height: 100%;
+  margin: 0;
+  background-color: rgb(26, 26, 26);
+  color: #fff;
+  font-weight: bold; 
+ cursor: pointer;
+ transition: 0.4s;
+}
+.add-btn:hover{
+color: #000;
+background-color: #fff;
+transition: all 0.4s;
+}
+
+/* list */
+.tasks{
+margin-top: 40px;
+}
+.task{
+background-color: rgb(225, 225, 225);
+width: 500px;
+height: 40px;
+margin: auto;
+margin-bottom: 10px;
+padding: 2px;
+display: flex;
+align-items: center;
+border-radius: 10px;
+justify-content: space-between;
+transition: 0.4s;
+}
+.task:hover{
+  box-shadow: 4px 4px 6px 0px #0000003b;
+  transition: 0.4s;
+}
+
+.checkbox{
+margin: 0;
+margin-right: 10px;
+margin-left: 10px;
+}
+
+.fn-e-d{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.edit{
+  margin-right: 7px;
+  cursor: pointer;
+}
+.edit:hover > path{
+  fill: orange;
+  transform: scale(1.04);
+  transition: all 0.2 ease;
+}
+.delete{
+  cursor: pointer;
+}
+.delete:hover > path{
+  fill: red;
+  transform: scale(1.04);
+  transition: all 0.2 ease;
+}
