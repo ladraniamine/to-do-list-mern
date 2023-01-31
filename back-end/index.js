@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const task = require('./routes/task')
+const cors = require('cors')
 
 const URI = "mongodb://localhost:27017/mern-to-do-list"
 //mongodb connection
@@ -13,12 +14,13 @@ mongoose.connect(URI , { useNewUrlParser: true })
 //middleware
 app.use(express.json())
 app.use(morgan('tiny'))
+app.use(cors())
 
 //url 
 app.use('/task' , task)
 
 //express connection
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 app.listen(PORT, ()=>{
     console.log(`app rouning on port ${PORT}`)
 })

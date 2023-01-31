@@ -4,7 +4,7 @@ import Add from './component/Add';
 import Lists from './component/Lists';
 
 function App() { 
-
+ 
   return (
     <div className="app">  
       <div className='wraper'>
