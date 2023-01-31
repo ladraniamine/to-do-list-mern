@@ -1,6 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+//checkbox checked or not
+export const checkbox = createAsyncThunk('task/checkbox' , async({id}, thunkAPI)=>{
+  const {rejectWithValue, dispatch} = thunkAPI
+  try{
+    await fetch(`http://localhost:4000/task/check/${id}` , {
+      method:'PUT'
+    })
+    dispatch(getalltasks())
+  }catch(error){
+      return rejectWithValue(error.message)
+  }
+})
 //delete task
   export const deleteTask = createAsyncThunk('task/deleteTask' , async({id} , thunkAPI)=>{
     const {rejectWithValue , dispatch} = thunkAPI
