@@ -112,3 +112,25 @@ margin-left: 10px;
   transform: scale(1.04);
   transition: all 0.2 ease;
 }
+
+.text{
+  text-decoration: line-through;
+}
+.update-content{
+  width: 50%;
+  height: 80%;
+  padding-left: 10px;
+}
+
+.update-content:focus{
+  outline: none;
+}
+.update-ok{
+  margin-left: 10px;
+}
+.edite-mode{
+  display: none;
+}
+.show-mode{
+  display: block;
+}
