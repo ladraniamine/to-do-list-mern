@@ -1,5 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+//update task
+export const updatetask = createAsyncThunk('task/updatetask' , async({content , id},thunkAPI)=>{
+  const {rejectWithValue, dispatch} = thunkAPI
+  try{
+      await fetch(`http://localhost:4000/task/content/${id}`, {
+        method:'PUT',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({content})
+      })
+      dispatch(getalltasks())
+  }catch(error){
+    return rejectWithValue(error.message)
+  }
+})
 //checkbox checked or not
 export const checkbox = createAsyncThunk('task/checkbox' , async({id}, thunkAPI)=>{
   const {rejectWithValue, dispatch} = thunkAPI

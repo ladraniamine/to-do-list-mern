@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { checkbox, deleteTask, getalltasks } from '../redux/slice/taskSlice';
+import { checkbox, deleteTask, getalltasks, updatetask } from '../redux/slice/taskSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useCallback } from 'react';
@@ -17,7 +17,7 @@ const Lists = () => {
   const handledelet = (pass_the_id)=>{
       dispatch(deleteTask({id:pass_the_id}))
   }
-  //edite task 
+  //edite task toggele
   const handleedite = useCallback((id)=>{
    
   const element = document.getElementById(id)
@@ -34,7 +34,23 @@ const Lists = () => {
     edite_mode.map(element=>{return element.style.display = 'none'})
   }
 })
-  
+
+//update task
+const handleupdate = (e,id)=>{
+  const element = document.getElementById(id)
+  const show_mode = Array.from(element.getElementsByClassName('show-mode'))
+  const edite_mode = Array.from(element.getElementsByClassName('edite-mode'))
+
+  const content = e.target.nextElementSibling.value
+    if(content == ""){
+      show_mode.map(element=>{return  element.style.display = 'block'})
+      edite_mode.map(element=>{return element.style.display = 'none'})
+    }else{
+      show_mode.map(element=>{return  element.style.display = 'block'})
+      edite_mode.map(element=>{return element.style.display = 'none'})
+      dispatch(updatetask({content , id:id}))
+    }
+}
   //checkbox
   const handlecheckbox = (id)=>{
     dispatch(checkbox({id}))
@@ -50,7 +66,7 @@ const Lists = () => {
           </>
 
          <>  {/* edite mode */}
-           <button className='update-ok edite-mode'>ok</button>
+           <button onClick={(e)=>{handleupdate(e,task._id)}} className='update-ok edite-mode'>ok</button>
            <input type="text" className='update-content edite-mode' placeholder='update'/>
          </>
 
