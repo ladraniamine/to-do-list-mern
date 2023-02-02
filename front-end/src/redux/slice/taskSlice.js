@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
- const basedURL = "https://todo-api.onrender.com" 
+ const basedURL = "https://todolistapi-h91o.onrender.com" 
 //update task
 export const updatetask = createAsyncThunk('task/updatetask' , async({content , id},thunkAPI)=>{
   const {rejectWithValue, dispatch} = thunkAPI
