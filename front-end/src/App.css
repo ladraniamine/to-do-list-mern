@@ -134,3 +134,9 @@ margin-left: 10px;
 .show-mode{
   display: block;
 }
+.no-task{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(46, 46, 46);
+}

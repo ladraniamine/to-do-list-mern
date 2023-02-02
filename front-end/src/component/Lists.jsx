@@ -1,13 +1,12 @@
 import React,{useEffect} from 'react'
 import { checkbox, deleteTask, getalltasks, updatetask } from '../redux/slice/taskSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { useCallback } from 'react';
 
 const Lists = () => {
   const {taskdata} = useSelector(state => state.task)
   const dispatch = useDispatch()
-
+  
   //get all tasks
   useEffect(()=>{
     dispatch(getalltasks())
@@ -83,7 +82,7 @@ const handleupdate = (e,id)=>{
               </svg>
           </div>
        </div>
-    }):"there is no task"}
+    }):<div className='no-task'>there is no task...</div>}
     </div>
   )
 }

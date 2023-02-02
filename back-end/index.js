@@ -4,8 +4,10 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const task = require('./routes/task')
 const cors = require('cors')
+const path = require('path')
+require('dotenv').config()
 
-const URI = "mongodb://localhost:27017/mern-to-do-list"
+const URI = process.env.URI
 //mongodb connection
 mongoose.set('strictQuery', false);
 mongoose.connect(URI , { useNewUrlParser: true })
@@ -19,6 +21,13 @@ app.use(cors())
 //url 
 app.use('/task' , task)
 
+//server production assets
+// if(process.env.NODE_ENV === "production"){
+//     app.use(express.static(path.join('front-end/build')))
+//     app.get('*' , (req,res)=>{
+//         res.sendFile(path.resolve(__dirname , 'front-end', 'build' , 'index.html'))
+//     })
+// }
 //express connection
 const PORT = process.env.PORT || 4000
 app.listen(PORT, ()=>{

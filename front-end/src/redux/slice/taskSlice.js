@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+ const basedURL = "https://todo-api.onrender.com" 
 //update task
 export const updatetask = createAsyncThunk('task/updatetask' , async({content , id},thunkAPI)=>{
   const {rejectWithValue, dispatch} = thunkAPI
   try{
-      await fetch(`http://localhost:4000/task/content/${id}`, {
+      await fetch(`${basedURL}/task/content/${id}`, {
         method:'PUT',
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify({content})
@@ -18,7 +19,7 @@ export const updatetask = createAsyncThunk('task/updatetask' , async({content , 
 export const checkbox = createAsyncThunk('task/checkbox' , async({id}, thunkAPI)=>{
   const {rejectWithValue, dispatch} = thunkAPI
   try{
-    await fetch(`http://localhost:4000/task/check/${id}` , {
+    await fetch(`${basedURL}/task/check/${id}` , {
       method:'PUT'
     })
     dispatch(getalltasks())
@@ -30,7 +31,7 @@ export const checkbox = createAsyncThunk('task/checkbox' , async({id}, thunkAPI)
   export const deleteTask = createAsyncThunk('task/deleteTask' , async({id} , thunkAPI)=>{
     const {rejectWithValue , dispatch} = thunkAPI
     try{
-      await fetch(`http://localhost:4000/task/${id}`, {
+      await fetch(`${basedURL}/task/${id}`, {
         method:"DELETE",
       })
       dispatch(getalltasks())
@@ -43,7 +44,7 @@ export const postTask = createAsyncThunk('task/postTask' , async({content},thunk
       const {rejectWithValue , dispatch} = thunkAPI
       try{
         
-         await fetch("http://localhost:4000/task", {
+         await fetch(`${basedURL}/task`, {
           method:"POST",
           headers:{'Content-Type': 'application/json'},
           body: JSON.stringify({content})
@@ -58,7 +59,7 @@ export const postTask = createAsyncThunk('task/postTask' , async({content},thunk
 export const getalltasks =  createAsyncThunk('task/getalltasks',async(args,thunkAPI)=>{
   const {rejectWithValue} = thunkAPI
   try{
-      const res = await fetch("http://localhost:4000/task")
+      const res = await fetch(`${basedURL}/task`)
       const data = res.json()
       return data
   }catch(error){
